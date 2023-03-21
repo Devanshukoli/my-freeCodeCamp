@@ -1,0 +1,42 @@
+pwd => will show you where you are currently.
+
+ls => will show all the docs that are in the folder.
+ls -l => will show all the folders/files in a linear format in alphabetic order.
+ls -a => will show ALL the files in the folder.
+
+cd => will go to that directory/folder. cd stands for "Change Directory". Note: directory and folder are the same things. ex; cd folder
+cd . => will return the folder you're in.
+cd .. => will go back/up folder.
+cd ../.. => will go back 2 folders back in the path.
+cd ../../.. => will go back 3 folders back in the path.
+
+clear => will clear all the commands from the show area.
+
+more <filename> => will go to any text file and will show what's in it.
+
+mkdir <folder_name> => will create a new folder where you are currently. mkdir stands for "Make Directory".
+mkdir <folder_name>/<new_folder_name> => will make a new directory as well, a new folder in it.
+
+echo <anything written here will print in the terminal> => a command to print anything in the terminal.
+echo text >> <filename> => This will print into the file rather on the terminal.
+
+touch <folder_name> => will create a new file. ex: touch index.html
+
+<command> flag => for showing any help(this is incomplete because i still don't know the potential of this whole command) ex : ls --help
+
+cp <file> <destination> => copy a file at given destination. cp stands for "Copy". ex: cp index.html main
+
+rm <filename> => basically, it removes the file. rm stand for `remove`.
+rm -r <folder_name> => will remove the non-empty directory as well. -r stands for recursive.
+rmdir <filename> => basically, it removes the directory.
+
+
+mv <filename> <new_filename> => mv stands for 'move'. Basically, rename or move the file.
+mv <filename> <destination> ==> for moving files from one place to another place. ex: mv images .. => this will move images directly to the back folder.
+
+find => for finding/displaying the working tree or file tree.
+find <folder_name> => to display the tree of a diff. folder.
+find -name <filename> => to find/display a specific file with a name
+
+
+

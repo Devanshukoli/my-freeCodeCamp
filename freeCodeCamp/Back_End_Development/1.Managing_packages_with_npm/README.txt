@@ -1,0 +1,10 @@
+Q. NPM for beginner level.
+=> NPM(short for node package manager) is a package manager for node.js. It is used to install and manage third-party lib., also known as 'packages', which can be used in Node.js projects.
+	-When anyone starts a new Node.js project, they typically create a 'package.json' file, which contains information about your project and the packages that it depends on. This file is used by NPM to manage dependencies and install packages.
+	- Key concepts for NPM only for beginners:
+		1. Installing packages: You can install packages using the `npm install` command followed by the name of the package. For ex., to install the popular `express` package, you would run `npm install express`. By default, NPM installs packages in a `node_modules` directory in your project.
+		2. Managing dependencies: NPM manages dependencies for your project through your `package.json` file. When you install a package, NPM adds it to the `dependencies` section of your `package.json`.
+			-You can also install packages as `devDependencies` if they are only needed for development(ex., testing frameworks). To remove a package, you can use the `npm uninstall` command followed by the name of the package.
+		3. Running scripts: NPM allows you to define scripts in your `package.json` file, which you can run using the `npm run` command followed by the script name. For example, you might define a script called to `start` that starts your server, and then run it using `npm run start`.
+		4. Updating packages: You can check for outdated packages using the `npm outdated` command, and update them using the `npm update` command. To update a specific package, you can use `npm update <package-name>`. Be careful when updating packages, as they may introduce breaking changes that could affect your project.
+		5. Publishing packages: If you create a package that you want to share with others, you can publish it to the NPM registry using the `npm publish` command. You'll need to create an account on the NPM website and follow their guidelines for publishing packages.

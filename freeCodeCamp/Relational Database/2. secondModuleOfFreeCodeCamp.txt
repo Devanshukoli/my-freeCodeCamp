@@ -1,0 +1,104 @@
+---------
+
+This is my 2nd module of Relational Database, from the freeCodeCamp.org site and here, I am starting this.
+Using `PostgreSQL`.
+
+1. The first thing That I did is to interact with `PostgreSQL`. (It was built into my Virtual machine).
+psql --username=freecodecamp --dbname=postgres
+
+2. for listing the databases that are available. 
+\l
+
+3. for creating a database. (NOTE: here, all commands need a semi-colon at the end.)
+CREATE DATABASE first_database;
+
+4. for connecting to the database.
+\c database_name;
+
+5. now, display the tables in the connected database.
+\d
+\d table_name => You can view more details about a table by adding the table name after the display command.
+
+6. for creating a table in the database. (NOTE: the parenthesis are needed for this one. It will create the table in the database you are connected to.)
+CREATE TABLE table_name()
+CREATE TABLE table_name(column_name DATATYPE CONSTRAINTS); ex : CREATE TABLE sounds(sounds_id SERIAL PRIMARY KEY);
+
+7. Add a column to the table.
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE;
+SERIAL(datatype): it basically makes the column `int` with a `not null` constraint, and automatically increments the integer when a new row is added.
+NUMERIC(4, 1): it is basically for decimals.
+DATE: it basically adds a date, but if you doing this on prompt then, you have to add a string in the format of 'YYYY-MM-DD'.
+
+8. drop a column onto the table.
+ALTER TABLE table_name DROP COLUMN column_name;
+
+9. for renaming a column.
+ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
+
+10. for adding data into the column.
+INSERT INTO table_name(column_1, column_2) VALUES(value1, value2);
+
+11. for viewing the data in a table by querying it with the `SELECT`.
+SELECT columns FROM table_name;
+ex : SELECT * FROM second_table;
+
+12. for deleting the row.
+DELETE FROM table_name WHERE condition;
+ex : DELETE FROM second_table WHERE username='Luigi';
+
+13. for renaming the database.
+ALTER DATABASE database_name RENAME TO new_database_name;
+ex : ALTER DATABASE first_database RENAME TO mario_database;
+
+14. for adding constrain when creating a column.
+ALTER TABLE characters ADD COLUMN name VARCHAR(30)NOT NULL;
+
+15. for changing the value in a table.
+UPDATE table_name SET column_name=new_value WHERE condition;
+ex : UPDATE characters SET favorite_color='Orange' WHERE name='Daisy';
+
+16. for putting columns in order.
+SELECT columns FROM table_name ORDER BY column_name;
+ex : SELECT * FROM characters ORDER BY character_id;
+
+17. for adding `PRIMARY KEY`.
+ALTER TABLE table_name ADD PRIMARY KEY(column_name);
+ex: ALTER TABLE characters ADD PRIMARY KEY(name);
+-> You can create a primary key from two columns, known as a composite primary key. :ALTER TABLE table_name ADD PRIMARY KEY(column1, column2);
+ex: ALTER TABLE character_actions ADD PRIMARY KEY(character_id, action_id);
+
+18. for dropping constraints.
+ALTER TABLE table_name DROP CONSTRAINT constraint_name;
+ex: ALTER TABLE characters DROP CONSTRAINT name;
+
+19. for adding foreign keys.
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE REFERENCES reference_table(reference_table_column); (NOTE: ONE-TO-ONE relationship.)
+ex: ALTER TABLE more_info ADD COLUMN character_id INT REFERENCES characters(character_id);
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE CONSTRAINT REFERENCES referenced_table_name(referenced_column_name); (NOTE: ONE-TO-MANY relationships.)
+(MANY-TO-MANY relationship) : "Many-to-many" relationships usually use a junction table to link two tables together, forming two "one-to-many" relationships. Your characters and actions table will be linked using a junction table. 
+-> You can set an existing column foreign key like this: ALTER TABLE table_name ADD FOREIGN KEY(column_name) REFERENCES referenced_table(referenced_column);
+ex: ALTER TABLE character_actions ADD FOREIGN KEY(character_id) REFERENCES characters(character_id);
+
+
+20. for adding the `UNIQUE` constraint on the foreign key.
+ALTER TABLE table_name ADD UNIQUE(column_name);
+ALTER TABLE more_info ADD UNIQUE(character_id);
+
+21. for setting the `NOT NULL` to a foreign key.
+ALTER TABLE table_name ALTER COLUMN column_name SET NOT NULL;
+
+22. for finding a specific name with the condition `WHERE`.
+SELECT columns FROM table_name WHERE condition;
+ex: SELECT character_id, name FROM characters WHERE username='Samus';
+
+23. IF you want to bring the details of two tables using JOIN.
+SELECT * FROM table_1 FULL JOIN table_2 ON table_1.primary_id=table_2.primary_id;
+ex: SELECT * FROM characters FULL JOIN more_info ON characters.character_id=more_info.character_id;
+
+24. three tables using joins.
+SELECT columns FROM junction_table
+FULL JOIN table_1 ON junction_table.foreign_key_column = table_1.primary_key_column
+FULL JOIN table_2 ON junction_table.foreign_key_column = table_2.primary_key_column;
+ex: SELECT * FROM character_actions
+	FULL JOIN characters ON character_actions. = characters.character_id
+	FULL JOIN actions ON character_actions. = actions. ;
